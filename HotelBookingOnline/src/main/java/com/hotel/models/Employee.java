@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -13,8 +15,9 @@ import javax.persistence.Table;
 @Table(name="employee")
 public class Employee {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "empId")
-	private String empId;
+	private int empId;
 	@Column(name = "empName")
 	private String empName;
 	@Column(name = "gender")
@@ -34,10 +37,7 @@ public class Employee {
 	@ManyToOne
 	@JoinColumn(name="roleId")
 	private Role role;
-	public Employee() {
-		super();
-	}
-	public Employee(String empId, String empName, String gender, Date dateOfBirth, String address, String phone,
+	public Employee(int empId, String empName, String gender, Date dateOfBirth, String address, String phone,
 			String photo, String username, String password, Role role) {
 		super();
 		this.empId = empId;
@@ -51,10 +51,13 @@ public class Employee {
 		this.password = password;
 		this.role = role;
 	}
-	public String getEmpId() {
+	public Employee() {
+		super();
+	}
+	public int getEmpId() {
 		return empId;
 	}
-	public void setEmpId(String empId) {
+	public void setEmpId(int empId) {
 		this.empId = empId;
 	}
 	public String getEmpName() {
@@ -111,5 +114,6 @@ public class Employee {
 	public void setRole(Role role) {
 		this.role = role;
 	}
+	
 	
 }

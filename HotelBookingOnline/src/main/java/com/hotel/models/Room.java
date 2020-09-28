@@ -22,7 +22,10 @@ import javax.persistence.Table;
 @Table(name = "room")
 public class Room {
 	@Id
-	@Column(name = "room_number")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "roomid")
+	private int roomid;
+	@Column(name = "roomnumber")
 	private int roomnumber;
 	@Column(name = "floor")
 	private int floor;
@@ -34,19 +37,26 @@ public class Room {
 	@JoinColumn(name="room_type_id")
 	private RoomType roomtype;
 	@OneToMany(mappedBy = "room", fetch = FetchType.EAGER)
-	private List<BookingDetails> accounts = new ArrayList<BookingDetails>(0);
+	private List<BookingDetails> bookingdetails = new ArrayList<BookingDetails>(0);
 	public Room() {
 		super();
 	}
-	public Room(int roomnumber, int floor, String description, String status, RoomType roomtype,
-			List<BookingDetails> accounts) {
+	public Room(int roomid, int roomnumber, int floor, String description, String status, RoomType roomtype,
+			List<BookingDetails> bookingdetails) {
 		super();
+		this.roomid = roomid;
 		this.roomnumber = roomnumber;
 		this.floor = floor;
 		this.description = description;
 		this.status = status;
 		this.roomtype = roomtype;
-		this.accounts = accounts;
+		this.bookingdetails = bookingdetails;
+	}
+	public int getRoomid() {
+		return roomid;
+	}
+	public void setRoomid(int roomid) {
+		this.roomid = roomid;
 	}
 	public int getRoomnumber() {
 		return roomnumber;
@@ -78,12 +88,11 @@ public class Room {
 	public void setRoomtype(RoomType roomtype) {
 		this.roomtype = roomtype;
 	}
-	public List<BookingDetails> getAccounts() {
-		return accounts;
+	public List<BookingDetails> getBookingdetails() {
+		return bookingdetails;
 	}
-	public void setAccounts(List<BookingDetails> accounts) {
-		this.accounts = accounts;
+	public void setBookingdetails(List<BookingDetails> bookingdetails) {
+		this.bookingdetails = bookingdetails;
 	}
-	
-	
+
 }

@@ -1,4 +1,4 @@
-package com.hotel.HotelBookingOnline;
+package com.hotel;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
