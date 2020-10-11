@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,11 +32,17 @@ public class Promotion {
 	private Date enddate;
 	@Column(name = "code")
 	private String code;
+	@Column(name = "value")
+	private int value;
+	@Enumerated(EnumType.STRING)
 	private Type type;
 	@OneToMany(mappedBy = "promotion", fetch = FetchType.LAZY)
 	private List<Booking> bookings=new ArrayList<Booking>();
+	public Promotion() {
+		super();
+	}
 	public Promotion(int promId, String promname, String description, Date startdate, Date enddate, String code,
-			Type type, List<Booking> bookings) {
+			int value, Type type, List<Booking> bookings) {
 		super();
 		this.promId = promId;
 		this.promname = promname;
@@ -42,11 +50,9 @@ public class Promotion {
 		this.startdate = startdate;
 		this.enddate = enddate;
 		this.code = code;
+		this.value = value;
 		this.type = type;
 		this.bookings = bookings;
-	}
-	public Promotion() {
-		super();
 	}
 	public int getPromId() {
 		return promId;
@@ -84,6 +90,12 @@ public class Promotion {
 	public void setCode(String code) {
 		this.code = code;
 	}
+	public int getValue() {
+		return value;
+	}
+	public void setValue(int value) {
+		this.value = value;
+	}
 	public Type getType() {
 		return type;
 	}
@@ -96,6 +108,8 @@ public class Promotion {
 	public void setBookings(List<Booking> bookings) {
 		this.bookings = bookings;
 	}
+	
+	
 	
 	
 }

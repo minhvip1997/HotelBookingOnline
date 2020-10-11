@@ -15,15 +15,21 @@ public class TypeRoomServiceImpl implements TypeRoomService{
  private TypeRoomRepository typerepository;
 
 @Override
-public Iterable<RoomType> findAll() {
+public List<RoomType> findAll() {
 	
-	return typerepository.findAll();
+	return (List<RoomType>) typerepository.findAll();
 }
 
 @Override
 public RoomType find(int id) {
 	
 	return typerepository.findById(id).get();
+}
+
+@Override
+public RoomType save(RoomType roomtype) {
+	// TODO Auto-generated method stub
+	return typerepository.save(roomtype);
 }
 	
 }

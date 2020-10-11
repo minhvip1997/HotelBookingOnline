@@ -134,10 +134,9 @@
 					<a href="#">Account</a>
 				</li>
 				<li>
-					<a href="#" data-toggle="modal" data-target="#login_signup">Login</a>
-				</li>
-				<li>
-					<a href="#" data-toggle="modal" data-target="#login_signup">Register</a>
+					<a href="login" class="btn btn-success float-right">Login</a>
+				
+				<a href="register" class="btn btn-success float-right">Register</a>
 				</li>
 			</ul>
 		</div>
@@ -160,7 +159,7 @@
 						<a class="nav-link" href="<c:url value="/"/>">Home</a>
 					</li>
 					<li class="nav-item ${fn:indexOf(url, 'rooms') > -1 ? ' active':''}">
-						<a class="nav-link" href="<c:url value="/rooms"/>">Rooms</a>
+						<a class="nav-link" href="<c:url value="rooms"/>">Rooms</a>
 					</li>
 					<li class="nav-item ${fn:indexOf(url, 'about') > -1 ? ' active':''}">
 						<a class="nav-link" href="<c:url value="/about"/>">About</a>
@@ -257,120 +256,5 @@
 	</nav>
 </header>
 <!-- Login Modal -->
-<div class="modal fade" id="login_signup">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<!-- Modal Header -->
-			<div class="modal-header">
-				<ul class="nav nav-pills">
-					<li class="nav-item">
-						<a class="nav-link active" data-toggle="pill" href="#Login-tab">Login</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" data-toggle="pill" href="#Register_tab">Register</a>
-					</li>
-				</ul>
-				<button type="button" class="close" data-dismiss="modal">
-					<i class="fa fa-times"></i>
-				</button>
-			</div>
-			<!-- Modal body -->
-			<div class="modal-body">
-				<div class="tab-content">
-					<div class="tab-pane active" id="Login-tab">
-						<div class="input-group">
-							<span class="input-group-addon">
-								<i class="fa fa-user"></i>
-							</span>
-							<input id="email" type="text" class="form-control" name="email" placeholder="Email Address">
-						</div>
-						<div class="input-group">
-							<span class="input-group-addon">
-								<i class="fa fa-lock"></i>
-							</span>
-							<input id="password" type="Password" class="form-control" name="password" placeholder="Password">
-						</div>
-						<div class="foregot_pass">
-							<label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
-								<input type="checkbox" class="custom-control-input">
-								<span class="custom-control-indicator"></span>
-								<span class="custom-control-description">Remember Me</span>
-							</label>
-							<a href="#">Forgot Password?</a>
-						</div>
-						<div class="text-right mt-4">
-							<input type="submit" value="Sign In" class="btn btn-success" />
-						</div>
-						<div class="socail_login">
-							<span class="or_line">OR</span>
-							<h6>Login with Your Social Profile</h6>
-							<ul>
-								<li>
-									<a href="#" class="fb_btn">
-										<i class="fa fa-facebook"></i>
-									</a>
-								</li>
-								<li>
-									<a href="#" class="twitter_btn">
-										<i class="fa fa-twitter"></i>
-									</a>
-								</li>
-								<li>
-									<a href="#" class="google_btn">
-										<i class="fa fa-google-plus"></i>
-									</a>
-								</li>
-								<li>
-									<a href="#" class="yahoo_btn">
-										<i class="fa fa-yahoo"></i>
-									</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-					<div class="tab-pane " id="Register_tab">
-						<div class="input-group">
-							<span class="input-group-addon">
-								<i class="fa fa-user"></i>
-							</span>
-							<input type="text" class="form-control" name="Username" placeholder="Username">
-						</div>
-						<div class="input-group">
-							<span class="input-group-addon">
-								<i class="fa fa-envelope"></i>
-							</span>
-							<input type="text" class="form-control" name="Email" placeholder="Email">
-						</div>
-						<div class="input-group">
-							<span class="input-group-addon">
-								<i class="fa fa-lock"></i>
-							</span>
-							<input type="Password" class="form-control" name="Password" placeholder="Password">
-						</div>
-						<div class="input-group">
-							<span class="input-group-addon">
-								<i class="fa fa-lock"></i>
-							</span>
-							<input type="Password" class="form-control" name="Confirm Password" placeholder="Confirm Password">
-						</div>
-						<div class="foregot_pass">
-							<label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
-								<input type="checkbox" class="custom-control-input">
-								<span class="custom-control-indicator"></span>
-								<span class="custom-control-description">
-									I agree with your
-									<a href="#">Terms & Conditions</a>
-								</span>
-							</label>
-						</div>
-						<div class="text-right mt-4">
-							<input type="submit" value="Sign Up" class="btn btn-success" />
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- Modal footer -->
-		</div>
-	</div>
-</div>
+
 <!-- Login Modal End -->

@@ -7,6 +7,7 @@ import com.hotel.models.RoomType;
 
 
 public interface TypeRoomService {
-public Iterable<RoomType> findAll();
+public List<RoomType> findAll();
 public RoomType find(int id);
+public RoomType save(RoomType roomtype);
 }

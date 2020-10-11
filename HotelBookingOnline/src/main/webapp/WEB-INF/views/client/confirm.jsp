@@ -12,13 +12,13 @@
 							<h2 class="page_title white-text">Confirm</h2>
 							<ul class="breadcrumb">
 								<li class="breadcrumb-item">
-									<a href="#">Home</a>
+									<a href="">Home</a>
 								</li>
 								<li class="breadcrumb-item">
 									<a href="#">Book Now</a>
 								</li>
 								<li class="breadcrumb-item">
-									<a href="#">Checkout</a>
+									<a href="checkout/${bookingnew.bookingId }">Checkout</a>
 								</li>
 								<li class="breadcrumb-item active">Confirm</li>
 							</ul>
@@ -52,10 +52,10 @@
 								<img src="${resources}/assets/images/conform_hotelpic.jpg" class="img-fluid" alt="">
 							</div>
 							<div class="col-lg-8 col-md-8 confortion_dic">
-								<h5>Citrus Cunningham Road, Bangalore</h5>
+								<h5>${booktype.typename }</h5>
 								<p class="clearfix">
-									<span class="float-left">1 Room for 4 Nights</span>
-									<span class="green_text1 float-right">Id: Q1405326f6521</span>
+									<span class="float-left">${bookingnew.numberOfRooms } Room for ${(bookingnew.getCheckOutDate().getTime()-bookingnew.getCheckInDate().getTime())/(60*60*24*1000) } Nights</span>
+									<span class="green_text1 float-right">Id: ${bookingnew.bookingId }</span>
 								</p>
 								<div class="conform_date clear">
 									<ul class="d-flex justify-content-between align-items-center">
@@ -67,7 +67,7 @@
 										<li class="text-center">
 											<span>
 												<i class="fa fa-clock-o d-block"></i>
-												2 nights
+												${(bookingnew.getCheckOutDate().getTime()-bookingnew.getCheckInDate().getTime())/(60*60*24*1000) } nights
 											</span>
 										</li>
 										<li>
@@ -79,8 +79,8 @@
 								</div>
 								<p class="getsts_cont">
 									<strong>Guests</strong>
-									<span>1 Adult</span>
-									<span> 2 Children</span>
+									<span>${bookingnew.adult } Adult</span>
+									<span>${bookingnew.children } Children</span>
 								</p>
 							</div>
 						</div>
@@ -88,24 +88,21 @@
 							<h5>Primary Traveller In This Trip :-</h5>
 							<ul class="d-inline-block m-b15">
 								<li>
-									<strong>First Name:</strong>
-									Charlie
+									<strong>Full Name:</strong>
+									${bookingnew.user.name }
 								</li>
 								<li>
 									<strong>Phone:</strong>
-									+123 546 7890
+									+${bookingnew.user.phone }
 								</li>
 								<li>
 									<strong>Country:</strong>
-									London SW1V 1AU, UK
+									Viet Nam
 								</li>
-								<li>
-									<strong>Last Name:</strong>
-									Lindbergh
-								</li>
+								
 								<li>
 									<strong>Address:</strong>
-									246 Vauxhall Bridge Rd
+									${bookingnew.user.address }
 								</li>
 								<li>
 									<strong>Zip:</strong>
@@ -113,11 +110,11 @@
 								</li>
 								<li>
 									<strong>Email:</strong>
-									info@example.com
+									${bookingnew.user.email }
 								</li>
 								<li>
 									<strong>City:</strong>
-									Westminster
+									Da Nang
 								</li>
 								<li>
 									<strong>Arrival:</strong>
@@ -144,26 +141,26 @@
 							</div>
 							<div class="receipt_widgets">
 								<h6>Total Charge</h6>
-								<strong>$45, 152</strong>
+								<strong>$${booktype.price*(bookingnew.getCheckOutDate().getTime()-bookingnew.getCheckInDate().getTime())/(60*60*24*1000) }</strong>
 							</div>
 							<div class="receipt_widgets rate_breakup">
 								<h6>Rate Breakup</h6>
 								<ul>
 									<li>
 										Room rate:
-										<strong>$45, 152</strong>
+										<strong>$${booktype.price }</strong>
 									</li>
 									<li>
 										Tax:
-										<strong>$1500</strong>
+										<strong>${promotions.value }</strong>
 									</li>
 									<li>
 										Discount:
-										<strong>$-15</strong>
+										<strong>${promotions.value }</strong>
 									</li>
 									<li>
 										Paid earlier:
-										<strong>$100</strong>
+										<strong>$${(booktype.price*(bookingnew.getCheckOutDate().getTime()-bookingnew.getCheckInDate().getTime())/(60*60*24*1000))-promotions.value }</strong>
 									</li>
 									<li>
 										Total:

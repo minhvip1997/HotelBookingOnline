@@ -1,9 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ include file="/common/taglib.jsp"%>
 <c:url var="resources" value="/resources" />
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- inner_window_banner Start bg -->
 <section>
-	<div class="inner_window_banner" data-parallax="scroll" data-image-src="${resources}/assets/images/inner_banner1.jpg">
+	<div class="inner_window_banner" data-parallax="scroll"
+		data-image-src="${resources}/assets/images/inner_banner1.jpg">
 		<div class="inner_window_overlay">
 			<div class="container">
 				<div class="row">
@@ -11,12 +15,8 @@
 						<div class="breadcrumb_parent text-center">
 							<h2 class="page_title white-text">Room Details</h2>
 							<ul class="breadcrumb">
-								<li class="breadcrumb-item">
-									<a href="#">Home</a>
-								</li>
-								<li class="breadcrumb-item">
-									<a href="#">Rooms</a>
-								</li>
+								<li class="breadcrumb-item"><a href="#">Home</a></li>
+								<li class="breadcrumb-item"><a href="#">Rooms</a></li>
 								<li class="breadcrumb-item active">Anchorage to Santiago</li>
 							</ul>
 						</div>
@@ -34,59 +34,59 @@
 			<div class="col-lg-9 col-md-12">
 				<div class="hotel-detail_slider1">
 					<div class="hotel_title clearfix">
-						<h3 class="float-left m-0">Anchorage to Santiago</h3>
+						<h3 class="float-left m-0">${roomtype.typename }</h3>
 					</div>
 					<!-- Productes Detail Slider 1 Start-->
 					<div class="product_detail_slider1">
 						<div id="detail_slider2" class="flexslider">
 							<ul class="slides">
-								<li>
-									<img src="${resources}/assets/images/hotel_detail_1_825x550.jpg" alt="image">
-								</li>
-								<li>
-									<img src="${resources}/assets/images/hotel_detail_2_825x550.jpg" alt="image">
-								</li>
-								<li>
-									<img src="${resources}/assets/images/hotel_detail_3_825x550.jpg" alt="image">
-								</li>
-								<li>
-									<img src="${resources}/assets/images/hotel_detail_4_825x550.jpg" alt="image">
-								</li>
-								<li>
-									<img src="${resources}/assets/images/hotel_detail_5_825x550.jpg" alt="image">
-								</li>
-								<li>
-									<img src="${resources}/assets/images/hotel_detail_6_825x550.jpg" alt="image">
-								</li>
-								<li>
-									<img src="${resources}/assets/images/hotel_detail_7_825x550.jpg" alt="image">
-								</li>
+								<li><img
+									src="${resources}/assets/images/hotel_detail_1_825x550.jpg"
+									alt="image"></li>
+								<li><img
+									src="${resources}/assets/images/hotel_detail_2_825x550.jpg"
+									alt="image"></li>
+								<li><img
+									src="${resources}/assets/images/hotel_detail_3_825x550.jpg"
+									alt="image"></li>
+								<li><img
+									src="${resources}/assets/images/hotel_detail_4_825x550.jpg"
+									alt="image"></li>
+								<li><img
+									src="${resources}/assets/images/hotel_detail_5_825x550.jpg"
+									alt="image"></li>
+								<li><img
+									src="${resources}/assets/images/hotel_detail_6_825x550.jpg"
+									alt="image"></li>
+								<li><img
+									src="${resources}/assets/images/hotel_detail_7_825x550.jpg"
+									alt="image"></li>
 							</ul>
 						</div>
 						<!-- Productes Detail Thumb -->
 						<div id="detail_carousel2" class="flexslider">
 							<ul class="slides">
-								<li>
-									<img src="${resources}/assets/images/hotel_detail_1_140x140.jpg" alt="image">
-								</li>
-								<li>
-									<img src="${resources}/assets/images/hotel_detail_2_140x140.jpg" alt="image">
-								</li>
-								<li>
-									<img src="${resources}/assets/images/hotel_detail_3_140x140.jpg" alt="image">
-								</li>
-								<li>
-									<img src="${resources}/assets/images/hotel_detail_4_140x140.jpg" alt="image">
-								</li>
-								<li>
-									<img src="${resources}/assets/images/hotel_detail_5_140x140.jpg" alt="image">
-								</li>
-								<li>
-									<img src="${resources}/assets/images/hotel_detail_6_140x140.jpg" alt="image">
-								</li>
-								<li>
-									<img src="${resources}/assets/images/hotel_detail_7_140x140.jpg" alt="image">
-								</li>
+								<li><img
+									src="${resources}/assets/images/hotel_detail_1_140x140.jpg"
+									alt="image"></li>
+								<li><img
+									src="${resources}/assets/images/hotel_detail_2_140x140.jpg"
+									alt="image"></li>
+								<li><img
+									src="${resources}/assets/images/hotel_detail_3_140x140.jpg"
+									alt="image"></li>
+								<li><img
+									src="${resources}/assets/images/hotel_detail_4_140x140.jpg"
+									alt="image"></li>
+								<li><img
+									src="${resources}/assets/images/hotel_detail_5_140x140.jpg"
+									alt="image"></li>
+								<li><img
+									src="${resources}/assets/images/hotel_detail_6_140x140.jpg"
+									alt="image"></li>
+								<li><img
+									src="${resources}/assets/images/hotel_detail_7_140x140.jpg"
+									alt="image"></li>
 							</ul>
 						</div>
 						<!-- Productes Detail Thumb -->
@@ -98,59 +98,57 @@
 			<div class="col-lg-3 col-md-12">
 				<div class="booking_detail_form">
 					<div class="yemm_top_price">
-						<strong>$142</strong>
+						<strong>${roomtype.price }</strong>
 						<p>Per Night</p>
 					</div>
-					<form class="booking_form1">
+					<s:form class="booking_form1" modelAttribute="booking"
+						action="/search" method="post">
 						<h4 class="form_title">Book Hotel</h4>
-						<div class="form-group select_cart_down">
-							<select class="fancy_fild form-control">
-								<option>Room</option>
-								<option>King Suit</option>
-								<option>Royal Suite</option>
-								<option>Two-Bedroom Suite</option>
-								<option>Deluxe</option>
-								<option>Ultra Deluxe</option>
-							</select>
-						</div>
+
 						<div class="form-group rel_position">
-							<input id="check-in" name="arrival" placeholder="Check In" type="text" class="fancy_fild form-control">
+							<s:input  path="checkInDate" placeholder="Check In" required="true"
+								type="text" class="fancy_fild form-control" />
 							<i class="fa fa-calendar absolute_icon"></i>
 						</div>
 						<div class="form-group rel_position">
-							<input id="check-out" name="departure" placeholder="Check Out" type="text" class="fancy_fild form-control">
-							<i class="fa fa-calendar absolute_icon"></i>
+							<s:input  path="checkOutDate" required="true"
+								placeholder="Check Out" type="text"
+								class="fancy_fild form-control" />
+							  <i class="fa fa-calendar absolute_icon"></i>
 						</div>
 						<div class="form-group select_cart_down">
-							<select class="fancy_fild form-control">
-								<option>Adults</option>
-								<option>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
-								<option>5</option>
-							</select>
+							<s:select path="adult" class="fancy_fild form-control">
+								<s:option value="1" label="1" />
+								<s:option value="2" label="2" />
+								<s:option value="3" label="3" />
+								<s:option value="4" label="4" />
+								<s:option value="5" label="5" />
+							</s:select>
 						</div>
 						<div class="form-group select_cart_down">
-							<select class="fancy_fild form-control">
-								<option>Children</option>
-								<option>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
-								<option>5</option>
-							</select>
+							<s:select path="children" class="fancy_fild form-control">
+								<s:option value="1" label="1" />
+								<s:option value="2" label="2" />
+								<s:option value="3" label="3" />
+								<s:option value="4" label="4" />
+								<s:option value="5" label="5" />
+							</s:select>
 						</div>
 						<div class="form-group">
 							<label>Rooms</label>
-							<input type="number" min="1" value="1" class="number-control">
+							<s:input type="number" min="1" value="1" path="numberOfRooms"
+								class="number-control" />
 						</div>
-						<input type="submit" value="Book Now" class="btn btn-success" />
-					</form>
+						<s:hidden path="roomtype.roomtypeid" value="${roomtype.roomtypeid }"/>
+					
+						<input type="submit" value="Search Now" class="btn btn-success" />
+					</s:form>
 				</div>
+				${msg}
 				<div class="hotel_adds_sec">
-					<a href="#">
-						<img src="${resources}/assets/images/featured_add_img.jpg" class="img-fluid" alt="">
+					<a href="#"> <img
+						src="${resources}/assets/images/featured_add_img.jpg"
+						class="img-fluid" alt="">
 					</a>
 				</div>
 			</div>
@@ -159,98 +157,62 @@
 		<div class="row">
 			<div class="scrollpay_nav col-lg-12">
 				<ul>
-					<li class="active">
-						<a id="link1" class="nav-section1" href="#owerviwe">Overview</a>
+					<li class="active"><a id="link1" class="nav-section1"
+						href="#owerviwe">Overview</a></li>
+					<li><a id="link2" class="nav-section2" href="#Additional_info">Additional
+							information </a></li>
+					<li><a id="link3" class="nav-section3" href="#Location_sec">Location</a>
 					</li>
-					<li>
-						<a id="link2" class="nav-section2" href="#Additional_info">Additional information </a>
+					<li><a id="link4" class="nav-section4" href="#Reviews_sec">Reviews</a>
 					</li>
-					<li>
-						<a id="link3" class="nav-section3" href="#Location_sec">Location</a>
-					</li>
-					<li>
-						<a id="link4" class="nav-section4" href="#Reviews_sec">Reviews</a>
-					</li>
-					<li class="scrollTop">
-						<a href="#">
-							<span class="entypo-up-open"></span>
-						</a>
-					</li>
+					<li class="scrollTop"><a href="#"> <span
+							class="entypo-up-open"></span>
+					</a></li>
 				</ul>
 			</div>
 			<div class="col-lg-12">
 				<div id="owerviwe">
 					<div class="dic_coman_style">
 						<strong class="des_title">About This Listing</strong>
-						<p>Donec sed odio dui. Donec sed odio dui. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Curabitur blandit
-							tempus porttitor. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Etiam porta sem malesuada magna mollis euismod. Cras
-							justo odio, dapibus ac facilisis in, egestas eget quam. Etiam porta sem malesuada magna mollis euismod.</p>
+						<p>${roomtype.description}</p>
 					</div>
 					<div class="dic_coman_style">
 						<div class="row">
 							<div class="col-lg-6 col-md-12 col-sm-6">
 								<strong class="des_title">The Space</strong>
 								<ul class="list-style-none">
-									<li>
-										Check In:
-										<strong>Anytime after 2PM</strong>
+									<li>Check In: <strong>Anytime after 2PM</strong>
 									</li>
-									<li>
-										Check Out:
-										<strong>10AM</strong>
+									<li>Check Out: <strong>10AM</strong>
 									</li>
-									<li>
-										Accommodates:
-										<strong>2</strong>
+									<li>Accommodates: <strong>2</strong>
 									</li>
-									<li>
-										Bathrooms:
-										<strong>1</strong>
+									<li>Bathrooms: <strong>1</strong>
 									</li>
-									<li>
-										Bed type:
-										<strong>Real Bed</strong>
+									<li>Bed type: <strong>Real Bed</strong>
 									</li>
-									<li>
-										Bedrooms:
-										<strong>1</strong>
+									<li>Bedrooms: <strong>1</strong>
 									</li>
-									<li>
-										Beds:
-										<strong>1</strong>
+									<li>Beds: <strong>1</strong>
 									</li>
-									<li>
-										Pet Owner:
-										<strong>Dog(s) and cat(s)</strong>
+									<li>Pet Owner: <strong>Dog(s) and cat(s)</strong>
 									</li>
-									<li>
-										Property type:
-										<strong>Treehouse</strong>
+									<li>Property type: <strong>Treehouse</strong>
 									</li>
-									<li>
-										Room type:
-										<strong>Entire home/apt</strong>
+									<li>Room type: <strong>Entire home/apt</strong>
 									</li>
 								</ul>
 							</div>
 							<div class="col-lg-6 col-md-12 col-sm-6">
 								<strong class="des_title">Prices</strong>
 								<ul class="list-style-none">
-									<li>
-										Extra people:
-										<strong>No Charge</strong>
+									<li>Extra people: <strong>No Charge</strong>
 									</li>
-									<li>
-										Cleaning Fee:
-										<strong>65</strong>
+									<li>Cleaning Fee: <strong>65</strong>
 									</li>
-									<li>
-										Weekly Discount:
-										<strong>10%</strong>
+									<li>Weekly Discount: <strong>10%</strong>
 									</li>
-									<li>
-										Monthly Discount:
-										<strong>20%</strong>
+									<li>Monthly Discount: <strong>20%</strong>
 									</li>
 								</ul>
 							</div>
@@ -261,33 +223,19 @@
 							<div class="col-lg-6 col-md-12 col-sm-6">
 								<strong class="des_title">Amenities</strong>
 								<ul class="list-style-none">
-									<li>
-										Wifi:
-										<strong>Free</strong>
+									<li>Wifi: <strong>Free</strong>
 									</li>
-									<li>
-										Elevator:
-										<strong>No</strong>
+									<li>Elevator: <strong>No</strong>
 									</li>
-									<li>
-										Hair Dryer :
-										<strong>Yes</strong>
+									<li>Hair Dryer : <strong>Yes</strong>
 									</li>
-									<li>
-										Air Conditioning :
-										<strong>Yes</strong>
+									<li>Air Conditioning : <strong>Yes</strong>
 									</li>
-									<li>
-										Parking:
-										<strong>$20 / Car / Night</strong>
+									<li>Parking: <strong>$20 / Car / Night</strong>
 									</li>
-									<li>
-										Safety Box:
-										<strong>Yes</strong>
+									<li>Safety Box: <strong>Yes</strong>
 									</li>
-									<li>
-										Television :
-										<strong>Yes</strong>
+									<li>Television : <strong>Yes</strong>
 									</li>
 								</ul>
 							</div>
@@ -304,13 +252,13 @@
 							<div class="col-lg-6 col-md-12 col-sm-6">
 								<strong class="des_title">Cancellations</strong>
 								<p class="">
-									This host has
-									<strong>a Moderate Cancellation Policy</strong>
-									- 100% refundable
+									This host has <strong>a Moderate Cancellation Policy</strong> -
+									100% refundable
 								</p>
 								<br>
-								<p>Cancel up to 7 days before your trip and get a full refund. Cancel within 7 days of the trip and get a 50% refund of the nightly rate,
-									as well as a full refund of fees.</p>
+								<p>Cancel up to 7 days before your trip and get a full
+									refund. Cancel within 7 days of the trip and get a 50% refund
+									of the nightly rate, as well as a full refund of fees.</p>
 							</div>
 							<div class="col-lg-6 col-md-12 col-sm-6">
 								<strong class="des_title">Safety features</strong>
@@ -344,12 +292,8 @@
 				<div id="Location_sec" class="dic_coman_style location_contant">
 					<h3 class="dic_title">Location</h3>
 					<address>
-						Address : Alnahas Building, 2 AlBahr St, Tanta AlGharbia, Egypt.
-						<br>
-						Phone : +123 456 7890
-						<br>
-						info@example.com
-						<br>
+						Address : Alnahas Building, 2 AlBahr St, Tanta AlGharbia, Egypt. <br>
+						Phone : +123 456 7890 <br> info@example.com <br>
 					</address>
 					<div class="hotel_loca_map">
 						<iframe class="w-100 border-0 map_height350"
@@ -365,41 +309,27 @@
 							<div class="col-lg-6 col-md-12 col-sm-6">
 								<h4 class="dic_title">Ratings</h4>
 								<div class="ratting_overall">
-									<strong class="over_cricul">4.5</strong>
-									<span>Overall Rating of 231 guest rating</span>
+									<strong class="over_cricul">4.5</strong> <span>Overall
+										Rating of 231 guest rating</span>
 									<div class="ratting_prog_contant row">
 										<div class="col-3 p-r-0">
 											<ul class="list-inline item-ratting">
-												<li>
-													<a href="#">
-														<i class="fa fa-star font18"></i>
-													</a>
-												</li>
-												<li>
-													<a href="#">
-														<i class="fa fa-star font18"></i>
-													</a>
-												</li>
-												<li>
-													<a href="#">
-														<i class="fa fa-star font18"></i>
-													</a>
-												</li>
-												<li>
-													<a href="#">
-														<i class="fa fa-star font18"></i>
-													</a>
-												</li>
-												<li>
-													<a href="#">
-														<i class="fa fa-star font18"></i>
-													</a>
-												</li>
+												<li><a href="#"> <i class="fa fa-star font18"></i>
+												</a></li>
+												<li><a href="#"> <i class="fa fa-star font18"></i>
+												</a></li>
+												<li><a href="#"> <i class="fa fa-star font18"></i>
+												</a></li>
+												<li><a href="#"> <i class="fa fa-star font18"></i>
+												</a></li>
+												<li><a href="#"> <i class="fa fa-star font18"></i>
+												</a></li>
 											</ul>
 										</div>
 										<div class="col-8 p-l-0">
 											<div class="progress">
-												<div class="progress-bar pro-50" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+												<div class="progress-bar pro-50" role="progressbar"
+													aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
 													<span class="sr-only">70% Complete</span>
 												</div>
 											</div>
@@ -411,36 +341,23 @@
 									<div class="ratting_prog_contant row">
 										<div class="col-3 p-r-0">
 											<ul class="list-inline item-ratting">
-												<li>
-													<a href="#">
-														<i class="fa fa-star font18"></i>
-													</a>
-												</li>
-												<li>
-													<a href="#">
-														<i class="fa fa-star font18"></i>
-													</a>
-												</li>
-												<li>
-													<a href="#">
-														<i class="fa fa-star font18"></i>
-													</a>
-												</li>
-												<li>
-													<a href="#">
-														<i class="fa fa-star font18"></i>
-													</a>
-												</li>
-												<li>
-													<a href="#">
-														<i class="fa fa-star un_hightlight font18"></i>
-													</a>
-												</li>
+												<li><a href="#"> <i class="fa fa-star font18"></i>
+												</a></li>
+												<li><a href="#"> <i class="fa fa-star font18"></i>
+												</a></li>
+												<li><a href="#"> <i class="fa fa-star font18"></i>
+												</a></li>
+												<li><a href="#"> <i class="fa fa-star font18"></i>
+												</a></li>
+												<li><a href="#"> <i
+														class="fa fa-star un_hightlight font18"></i>
+												</a></li>
 											</ul>
 										</div>
 										<div class="col-8 p-l-0">
 											<div class="progress">
-												<div class="progress-bar pro-75" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+												<div class="progress-bar pro-75" role="progressbar"
+													aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
 													<span class="sr-only">70% Complete</span>
 												</div>
 											</div>
@@ -452,36 +369,24 @@
 									<div class="ratting_prog_contant row">
 										<div class="col-3 p-r-0">
 											<ul class="list-inline item-ratting">
-												<li>
-													<a href="#">
-														<i class="fa fa-star font18"></i>
-													</a>
-												</li>
-												<li>
-													<a href="#">
-														<i class="fa fa-star font18"></i>
-													</a>
-												</li>
-												<li>
-													<a href="#">
-														<i class="fa fa-star font18"></i>
-													</a>
-												</li>
-												<li>
-													<a href="#">
-														<i class="fa fa-star font18 un_hightlight"></i>
-													</a>
-												</li>
-												<li>
-													<a href="#">
-														<i class="fa fa-star font18 un_hightlight"></i>
-													</a>
-												</li>
+												<li><a href="#"> <i class="fa fa-star font18"></i>
+												</a></li>
+												<li><a href="#"> <i class="fa fa-star font18"></i>
+												</a></li>
+												<li><a href="#"> <i class="fa fa-star font18"></i>
+												</a></li>
+												<li><a href="#"> <i
+														class="fa fa-star font18 un_hightlight"></i>
+												</a></li>
+												<li><a href="#"> <i
+														class="fa fa-star font18 un_hightlight"></i>
+												</a></li>
 											</ul>
 										</div>
 										<div class="col-8 p-l-0">
 											<div class="progress">
-												<div class="progress-bar pro-25" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+												<div class="progress-bar pro-25" role="progressbar"
+													aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
 													<span class="sr-only">70% Complete</span>
 												</div>
 											</div>
@@ -493,36 +398,25 @@
 									<div class="ratting_prog_contant row">
 										<div class="col-3 p-r-0">
 											<ul class="list-inline item-ratting">
-												<li>
-													<a href="#">
-														<i class="fa fa-star font18"></i>
-													</a>
-												</li>
-												<li>
-													<a href="#">
-														<i class="fa fa-star font18"></i>
-													</a>
-												</li>
-												<li>
-													<a href="#">
-														<i class="fa fa-star font18 un_hightlight"></i>
-													</a>
-												</li>
-												<li>
-													<a href="#">
-														<i class="fa fa-star font18 un_hightlight"></i>
-													</a>
-												</li>
-												<li>
-													<a href="#">
-														<i class="fa fa-star font18 un_hightlight"></i>
-													</a>
-												</li>
+												<li><a href="#"> <i class="fa fa-star font18"></i>
+												</a></li>
+												<li><a href="#"> <i class="fa fa-star font18"></i>
+												</a></li>
+												<li><a href="#"> <i
+														class="fa fa-star font18 un_hightlight"></i>
+												</a></li>
+												<li><a href="#"> <i
+														class="fa fa-star font18 un_hightlight"></i>
+												</a></li>
+												<li><a href="#"> <i
+														class="fa fa-star font18 un_hightlight"></i>
+												</a></li>
 											</ul>
 										</div>
 										<div class="col-8 p-l-0">
 											<div class="progress">
-												<div class="progress-bar pro-15" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+												<div class="progress-bar pro-15" role="progressbar"
+													aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
 													<span class="sr-only">70% Complete</span>
 												</div>
 											</div>
@@ -534,36 +428,26 @@
 									<div class="ratting_prog_contant row">
 										<div class="col-3 p-r-0">
 											<ul class="list-inline item-ratting">
-												<li>
-													<a href="#">
-														<i class="fa fa-star"></i>
-													</a>
-												</li>
-												<li>
-													<a href="#">
-														<i class="fa fa-star font18 un_hightlight"></i>
-													</a>
-												</li>
-												<li>
-													<a href="#">
-														<i class="fa fa-star font18 un_hightlight"></i>
-													</a>
-												</li>
-												<li>
-													<a href="#">
-														<i class="fa fa-star font18 un_hightlight"></i>
-													</a>
-												</li>
-												<li>
-													<a href="#">
-														<i class="fa fa-star font18 un_hightlight"></i>
-													</a>
-												</li>
+												<li><a href="#"> <i class="fa fa-star"></i>
+												</a></li>
+												<li><a href="#"> <i
+														class="fa fa-star font18 un_hightlight"></i>
+												</a></li>
+												<li><a href="#"> <i
+														class="fa fa-star font18 un_hightlight"></i>
+												</a></li>
+												<li><a href="#"> <i
+														class="fa fa-star font18 un_hightlight"></i>
+												</a></li>
+												<li><a href="#"> <i
+														class="fa fa-star font18 un_hightlight"></i>
+												</a></li>
 											</ul>
 										</div>
 										<div class="col-8 p-l-0">
 											<div class="progress">
-												<div class="progress-bar pro-0" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+												<div class="progress-bar pro-0" role="progressbar"
+													aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
 													<span class="sr-only">70% Complete</span>
 												</div>
 											</div>
@@ -577,31 +461,20 @@
 							<div class="col-lg-6 col-md-12 col-sm-6 hotel-review_form">
 								<h4 class="dic_title float-left">Review</h4>
 								<ul class="list-inline item-ratting float-right">
-									<li>
-										<a href="#">
-											<i class="fa fa-star font18"></i>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<i class="fa fa-star un_hightlight font18"></i>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<i class="fa fa-star un_hightlight font18"></i>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<i class="fa fa-star un_hightlight font18"></i>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<i class="fa fa-star un_hightlight font18"></i>
-										</a>
-									</li>
+									<li><a href="#"> <i class="fa fa-star font18"></i>
+									</a></li>
+									<li><a href="#"> <i
+											class="fa fa-star un_hightlight font18"></i>
+									</a></li>
+									<li><a href="#"> <i
+											class="fa fa-star un_hightlight font18"></i>
+									</a></li>
+									<li><a href="#"> <i
+											class="fa fa-star un_hightlight font18"></i>
+									</a></li>
+									<li><a href="#"> <i
+											class="fa fa-star un_hightlight font18"></i>
+									</a></li>
 								</ul>
 								<form>
 									<div class="form-group">
@@ -611,7 +484,8 @@
 										<input type="text" placeholder="Email" class="form-control">
 									</div>
 									<div class="form-group">
-										<textarea placeholder="Comment" class="form-control textaria_height"></textarea>
+										<textarea placeholder="Comment"
+											class="form-control textaria_height"></textarea>
 									</div>
 									<input type="submit" value="Submit" class="btn btn-success" />
 								</form>
@@ -621,19 +495,22 @@
 					<div class="row cleint_review">
 						<div class="col-lg-2 col-md-2 col-sm-3">
 							<div class="cleint_pic">
-								<img src="${resources}/assets/images/client_pic.jpg" class="img-fluid" alt="">
+								<img src="${resources}/assets/images/client_pic.jpg"
+									class="img-fluid" alt="">
 							</div>
 						</div>
 						<div class="col-lg-10 col-md-10 col-sm-9">
 							<div class="clients_msg">
 								<h4>Liza D'souza</h4>
 								<div class="date_time">
-									<span>10:45 AM</span>
-									<span class="verti_divider">Nov 24, 2017</span>
-									<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora
-										incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem</p>
-									<a href="#" class="reply_btn">
-										<i class="fa fa-reply m-r-7"></i>
+									<span>10:45 AM</span> <span class="verti_divider">Nov
+										24, 2017</span>
+									<p>Neque porro quisquam est, qui dolorem ipsum quia dolor
+										sit amet, consectetur, adipisci velit, sed quia non numquam
+										eius modi tempora incidunt ut labore et dolore magnam aliquam
+										quaerat voluptatem. Ut enim ad minima veniam, quis nostrum
+										exercitationem</p>
+									<a href="#" class="reply_btn"> <i class="fa fa-reply m-r-7"></i>
 										Reply
 									</a>
 								</div>
@@ -643,19 +520,22 @@
 					<div class="row cleint_review review_align_right">
 						<div class="col-lg-2 col-md-2 col-sm-3">
 							<div class="cleint_pic">
-								<img src="${resources}/assets/images/client_pic2.jpg" class="img-fluid" alt="">
+								<img src="${resources}/assets/images/client_pic2.jpg"
+									class="img-fluid" alt="">
 							</div>
 						</div>
 						<div class="col-lg-10 col-md-10 col-sm-9">
 							<div class="clients_msg">
 								<h4>John Deo</h4>
 								<div class="date_time">
-									<span>10:45 AM</span>
-									<span class="verti_divider">Nov 24, 2017</span>
-									<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora
-										incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem</p>
-									<a href="#" class="reply_btn">
-										<i class="fa fa-reply m-r-7"></i>
+									<span>10:45 AM</span> <span class="verti_divider">Nov
+										24, 2017</span>
+									<p>Neque porro quisquam est, qui dolorem ipsum quia dolor
+										sit amet, consectetur, adipisci velit, sed quia non numquam
+										eius modi tempora incidunt ut labore et dolore magnam aliquam
+										quaerat voluptatem. Ut enim ad minima veniam, quis nostrum
+										exercitationem</p>
+									<a href="#" class="reply_btn"> <i class="fa fa-reply m-r-7"></i>
 										Reply
 									</a>
 								</div>

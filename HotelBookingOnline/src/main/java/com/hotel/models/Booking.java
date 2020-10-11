@@ -10,6 +10,8 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -40,6 +42,7 @@ public class Booking {
 	private Date checkOutDate;
 	@Column(name = "paymentType")
 	private String paymentType;
+	@Enumerated(EnumType.STRING)
 	private Status status;
 	@Column(name = "note")
 	private String note;
@@ -51,7 +54,7 @@ public class Booking {
 	private int children;
 	@Column(name = "Bookingcol")
 	private String Bookingcol;
-	@OneToMany(mappedBy = "booking", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "booking", fetch = FetchType.EAGER)
 	private List<BookingDetails> bookingdetails = new ArrayList<BookingDetails>(0);
 	@OneToMany(mappedBy = "booking", fetch = FetchType.LAZY)
 	private List<Invoice> invoices = new ArrayList<Invoice>(0);
@@ -62,14 +65,14 @@ public class Booking {
 	private RoomType roomtype;
 	@ManyToOne
 	@JoinColumn(name="userId")
-	private RoomType user;
+	private User user;
 	@ManyToOne
 	@JoinColumn(name="promId")
-	private RoomType promotion;
+	private Promotion promotion;
 	public Booking(int bookingId, String bookinguid, LocalDateTime bookingDate, Date checkInDate, Date checkOutDate,
 			String paymentType, Status status, String note, int numberOfRooms, int adult, int children,
 			String bookingcol, List<BookingDetails> bookingdetails, List<Invoice> invoices, List<Charge> charges,
-			RoomType roomtype, RoomType user, RoomType promotion) {
+			RoomType roomtype, User user, Promotion promotion) {
 		super();
 		this.bookingId = bookingId;
 		this.bookinguid = bookinguid;
@@ -82,7 +85,7 @@ public class Booking {
 		this.numberOfRooms = numberOfRooms;
 		this.adult = adult;
 		this.children = children;
-		Bookingcol = bookingcol;
+		this.Bookingcol = bookingcol;
 		this.bookingdetails = bookingdetails;
 		this.invoices = invoices;
 		this.charges = charges;
@@ -90,6 +93,9 @@ public class Booking {
 		this.user = user;
 		this.promotion = promotion;
 	}
+	
+	
+
 	public Booking() {
 		super();
 	}
@@ -189,17 +195,30 @@ public class Booking {
 	public void setRoomtype(RoomType roomtype) {
 		this.roomtype = roomtype;
 	}
-	public RoomType getUser() {
+
+
+
+	public User getUser() {
 		return user;
 	}
-	public void setUser(RoomType user) {
+
+
+
+	public void setUser(User user) {
 		this.user = user;
 	}
-	public RoomType getPromotion() {
+
+
+
+	public Promotion getPromotion() {
 		return promotion;
 	}
-	public void setPromotion(RoomType promotion) {
+
+
+
+	public void setPromotion(Promotion promotion) {
 		this.promotion = promotion;
 	}
+	
 	
 }

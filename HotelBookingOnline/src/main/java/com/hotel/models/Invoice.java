@@ -27,8 +27,8 @@ public class Invoice {
 	private Booking booking;
 	@ManyToOne
 	@JoinColumn(name="cardNumber")
-	private Booking creditcard;
-	public Invoice(int invoiceId, LocalDateTime invoiceDate, double amount, Booking booking, Booking creditcard) {
+	private CreditCard creditcard;
+	public Invoice(int invoiceId, LocalDateTime invoiceDate, double amount, Booking booking, CreditCard creditcard) {
 		super();
 		this.invoiceId = invoiceId;
 		this.invoiceDate = invoiceDate;
@@ -63,10 +63,10 @@ public class Invoice {
 	public void setBooking(Booking booking) {
 		this.booking = booking;
 	}
-	public Booking getCreditcard() {
+	public CreditCard getCreditcard() {
 		return creditcard;
 	}
-	public void setCreditcard(Booking creditcard) {
+	public void setCreditcard(CreditCard creditcard) {
 		this.creditcard = creditcard;
 	}
 	

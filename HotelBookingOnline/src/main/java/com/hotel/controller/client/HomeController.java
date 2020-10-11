@@ -33,4 +33,12 @@ public class HomeController {
 	private String viewFAQs() {
 		return "faqs";
 	}
+	@GetMapping("register")
+	private String register() {
+		return "user.register";
+	}
+	@GetMapping("login")
+	private String login() {
+		return "user.login";
+	}
 }

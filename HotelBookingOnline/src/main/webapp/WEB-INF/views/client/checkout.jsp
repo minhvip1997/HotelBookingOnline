@@ -1,6 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ include file="/common/taglib.jsp"%>
 <c:url var="resources" value="/resources" />
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- inner_window_banner Start bg -->
 <section>
 	<div class="inner_window_banner" data-parallax="scroll" data-image-src="${resources}/assets/images/inner_banner1.jpg">
@@ -32,7 +34,7 @@
 		<div class="row checkout_yemm">
 			<div class="col-12">
 				<div class="pay_mathod_header">
-					<strong class="total_pey">Total Amount: $336.00</strong>
+					<strong class="total_pey">Total Amount: ${amount }</strong>
 					<h4 class="float-left">Choose a Payment Method :-</h4>
 					<div class="dic_msg clear">Hurry! Avail 10% cashback upto INR50 now, pay via Freecharge Wallet. TnC apply.</div>
 				</div>
@@ -68,60 +70,68 @@
 							<div class="col-lg-9 col-md-8 col-sm-8">
 								<div class="tab-content" id="pills-tabContent">
 									<div class="tab-pane fade show active" id="pills-creadit" role="tabpanel" aria-labelledby="pills-creadit-tab">
-										<form class="form-row">
+										<s:form class="form-row" modelAttribute="invoice" action="/done" method="post">
 											<div class="form-group col-sm-12">
 												<label class="font-bold18 d-block">Card Type</label>
 												<img src="${resources}/assets/images/payment_card.png" alt="">
 											</div>
 											<div class="form-group col-sm-6">
 												<label class="font-bold18">Card Number</label>
-												<input class="form-control" type="text">
+												<s:input class="form-control"  path="creditcard.cardNumber"/>
 											</div>
 											<div class="form-group col-sm-6">
 												<label class="font-bold18">Name on Card</label>
-												<input class="form-control" type="text">
+												<s:input class="form-control" path="creditcard.ownerName"/>
 											</div>
 											<div class="form-group col-sm-12">
 												<label class="font-bold18">Expiry Date</label>
 												<div class="form-row">
 													<div class="col-6 select_cart_down">
-														<select class="form-control">
-															<option>MM</option>
-															<option>January</option>
-															<option>February</option>
-															<option>March</option>
-															<option>April</option>
-															<option>May</option>
-															<option>June</option>
-															<option>July</option>
-															<option>August</option>
-															<option>September</option>
-															<option>October</option>
-															<option>November</option>
-															<option>December</option>
-														</select>
+														<s:select class="form-control" path="creditcard.expiryMonth">
+															<s:option value="1" label="January"/>
+															<s:option value="2" label="February"/>
+															<s:option value="3" label="March"/>
+															<s:option value="4" label="April"/>
+															<s:option value="5" label="May"/>
+															<s:option value="6" label="June"/>
+															<s:option value="7" label="July"/>
+															<s:option value="8" label="August"/>
+															<s:option value="9" label="September"/>
+															<s:option value="10" label="October"/>
+															<s:option value="11" label="November"/>
+															<s:option value="12" label="December"/>
+														</s:select>
 													</div>
 													<div class="col-6 select_cart_down">
-														<select class="form-control">
-															<option value="YY">YY</option>
-															<option value="2009">2009</option>
-															<option value="2010">2010</option>
-															<option value="2011">2011</option>
-															<option value="2012">2012</option>
-															<option value="2013">2013</option>
-															<option value="2014">2014</option>
-															<option value="2015">2015</option>
-															<option value="2016">2016</option>
-															<option value="2017">2017</option>
-															<option value="2019">2019</option>
-														</select>
+														<s:select class="form-control"  path="creditcard.expiryYear">
+															<s:option value="2009" label="2009"/>
+															<s:option value="2010" label="2010"/>
+															<s:option value="2011" label="2011"/>
+															<s:option value="2012" label="2012"/>
+															<s:option value="2013" label="2013"/>
+															<s:option value="2014" label="2014"/>
+															<s:option value="2015" label="2015"/>
+															<s:option value="2016" label="2016"/>
+															<s:option value="2017" label="2017"/>
+															<s:option value="2018" label="2018"/>
+															<s:option value="2019" label="2019"/>
+															<s:option value="2020" label="2020"/>
+														</s:select>
 													</div>
 												</div>
 											</div>
 											<div class="form-group col-sm-12 ">
 												<label class="font-bold18">CVV Number</label>
-												<input class="form-control" type="text">
+												<s:input class="form-control" path="creditcard.cvvcode"/>
 											</div>
+											<div class="form-group col-sm-12 ">
+												<label class="font-bold18">Invoice date</label>
+												<!--<s:input class="form-control" path="invoiceDate" value="${invoiceDate }" />-->
+											</div>
+											<s:hidden path="booking.bookingId" value="${books.bookingId }"/>
+											<s:hidden path="creditcard.cardNumber" value="${card.cardNumber }"/>
+											<s:hidden path="amount" value="${amount }"/>
+											<!--<s:hidden path="invoiceDate" value="${invoiceDate }" />-->
 											<div class="col-12 text-center">
 												<p class="note_text">
 													<strong>Note:</strong>
@@ -129,63 +139,67 @@
 												</p>
 												<input type="submit" value="Pay Now">
 											</div>
-										</form>
+										</s:form>
 									</div>
 									<div class="tab-pane fade" id="pills-dabit" role="tabpanel" aria-labelledby="pills-dabit-tab">
-										<form class="form-row">
+										<s:form class="form-row" modelAttribute="invoice" action="checkout" method="post">
 											<div class="form-group col-sm-12">
 												<label class="font-bold18 d-block">Card Type</label>
 												<img src="${resources}/assets/images/payment_card.png" alt="">
 											</div>
 											<div class="form-group col-sm-6">
 												<label class="font-bold18">Card Number</label>
-												<input class="form-control" type="text">
+												<input class="form-control" path="creditcard.cardNumber">
 											</div>
 											<div class="form-group col-sm-6">
 												<label class="font-bold18">Name on Card</label>
-												<input class="form-control" type="text">
+												<input class="form-control" path="creditcard.ownerName">
 											</div>
 											<div class="form-group col-sm-12">
 												<label class="font-bold18">Expiry Date</label>
 												<div class="form-row">
 													<div class="col-6 select_cart_down">
-														<select class="form-control">
-															<option>MM</option>
-															<option>January</option>
-															<option>February</option>
-															<option>March</option>
-															<option>April</option>
-															<option>May</option>
-															<option>June</option>
-															<option>July</option>
-															<option>August</option>
-															<option>September</option>
-															<option>October</option>
-															<option>November</option>
-															<option>December</option>
-														</select>
+														<s:select class="form-control" path="creditcard.expiryMonth">
+															<s:option value="1" label="January"/>
+															<s:option value="2" label="February"/>
+															<s:option value="3" label="March"/>
+															<s:option value="4" label="April"/>
+															<s:option value="5" label="May"/>
+															<s:option value="6" label="June"/>
+															<s:option value="7" label="July"/>
+															<s:option value="8" label="August"/>
+															<s:option value="9" label="September"/>
+															<s:option value="10" label="October"/>
+															<s:option value="11" label="November"/>
+															<s:option value="12" label="December"/>
+														</s:select>
 													</div>
 													<div class="col-6 select_cart_down">
-														<select class="form-control">
-															<option value="YY">YY</option>
-															<option value="2009">2009</option>
-															<option value="2010">2010</option>
-															<option value="2011">2011</option>
-															<option value="2012">2012</option>
-															<option value="2013">2013</option>
-															<option value="2014">2014</option>
-															<option value="2015">2015</option>
-															<option value="2016">2016</option>
-															<option value="2017">2017</option>
-															<option value="2019">2019</option>
-														</select>
+														<s:select class="form-control"  path="creditcard.expiryYear">
+															<s:option value="2009" label="2009"/>
+															<s:option value="2010" label="2010"/>
+															<s:option value="2011" label="2011"/>
+															<s:option value="2012" label="2012"/>
+															<s:option value="2013" label="2013"/>
+															<s:option value="2014" label="2014"/>
+															<s:option value="2015" label="2015"/>
+															<s:option value="2016" label="2016"/>
+															<s:option value="2017" label="2017"/>
+															<s:option value="2018" label="2018"/>
+															<s:option value="2019" label="2019"/>
+															<s:option value="2020" label="2020"/>
+														</s:select>
 													</div>
 												</div>
 											</div>
 											<div class="form-group col-sm-12 ">
 												<label class="font-bold18">CVV Number</label>
-												<input class="form-control" type="text">
+												<s:input class="form-control" path="creditcard.cvvcode"/>
 											</div>
+											<s:hidden path="booking.bookingId" value="${books.bookingId }"/>
+											<s:hidden path="creditcard.cardNumber" value="${card.cardNumber }"/>
+											<s:hidden path="amount" value="${amount }"/>
+											<s:hidden path="invoiceDate" value="${invoiceDate }"/>
 											<div class="col-12 text-center">
 												<p class="note_text">
 													<strong>Note:</strong>
@@ -193,7 +207,7 @@
 												</p>
 												<input type="submit" value="Pay Now">
 											</div>
-										</form>
+										</s:form>
 									</div>
 									<div class="tab-pane fade" id="pills-netbanking" role="tabpanel" aria-labelledby="pills-netbanking-tab">Coming Soon</div>
 									<div class="tab-pane fade" id="pills-paypal" role="tabpanel" aria-labelledby="pills-paypal-tab">

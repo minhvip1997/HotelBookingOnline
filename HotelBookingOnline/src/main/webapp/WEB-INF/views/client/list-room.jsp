@@ -110,7 +110,7 @@
 								<strong class="green_text">${r.price }</strong>
 								<span class="text-uppercase d-block">PER NIGHT</span>
 							</p>
-							<a href="/room-detail/${r.roomtypeid }" class="btn btn-success float-right">View Details</a>
+							<a href="room-detail/${r.roomtypeid }" class="btn btn-success float-right">View Details</a>
 						</div>
 					</div>
 				</div>
