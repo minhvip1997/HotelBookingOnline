@@ -120,17 +120,17 @@
 
 							<tr>
 								<td><s:input path="roomtype.roomtypeid" size="10"
-										value="${booking.roomtype.roomtypeid}" /></td>
+										value="${booking.roomtype.roomtypeid}" readonly="true"/></td>
 								<td><s:input path="adult" size="10"
-										value="${booking.adult }" /></td>
+										value="${booking.adult }" readonly="true"/></td>
 								<td><s:input path="children" size="10"
-										value="${booking.children }" /></td>
+										value="${booking.children }" readonly="true"/></td>
 								<td><s:input path="numberOfRooms" size="10"
-										value="${booking.numberOfRooms }" /></td>
+										value="${booking.numberOfRooms }" readonly="true"/></td>
 								<td><s:input path="checkInDate"
-										value="${checkIn }" type="text" /></td>
+										value="${checkIn }" type="text" readonly="true"/></td>
 								<td><s:input path="checkOutDate"
-										value="${checkOut }"  type="text" /></td>
+										value="${checkOut }"  type="text" readonly="true"/></td>
 								<td>${(booking.getCheckOutDate().getTime()-booking.getCheckInDate().getTime())/(60*60*24*1000)}
 								</td>
 								<td>${roomtype.price*(booking.getCheckOutDate().getTime()-booking.getCheckInDate().getTime())/(60*60*24*1000)*booking.numberOfRooms }</td>

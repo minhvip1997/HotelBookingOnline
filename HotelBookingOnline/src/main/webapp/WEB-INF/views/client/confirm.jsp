@@ -37,6 +37,7 @@
 				<div class="alert alert-success">
 					<i class="fa fa-info-circle m-r-7"></i>
 					Thank you! Your booking has been placed. We will contact you to confirm about the booking soon.
+					<p>Please check your email to verify your booking</p>
 				</div>
 			</div>
 		</div>
@@ -164,7 +165,7 @@
 									</li>
 									<li>
 										Total:
-										<strong>$45, 152</strong>
+										<strong>$${(booktype.price*(bookingnew.getCheckOutDate().getTime()-bookingnew.getCheckInDate().getTime())/(60*60*24*1000))-promotions.value }</strong>
 									</li>
 								</ul>
 							</div>

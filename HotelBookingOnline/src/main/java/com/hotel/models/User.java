@@ -33,6 +33,7 @@ public class User {
 	private String picture;
 	@Column(name = "status")
 	private int status;
+	
 	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
 	private List<Booking> bookings=new ArrayList<Booking>();
 	public User() {
@@ -105,5 +106,6 @@ public class User {
 	public void setBookings(List<Booking> bookings) {
 		this.bookings = bookings;
 	}
+	
 	
 }

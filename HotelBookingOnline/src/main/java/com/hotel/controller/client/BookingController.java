@@ -1,5 +1,6 @@
 package com.hotel.controller.client;
 
+import java.io.UnsupportedEncodingException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -7,6 +8,9 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import javax.mail.MessagingException;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,6 +39,7 @@ import com.hotel.services.PromotionService;
 import com.hotel.services.RoomService;
 import com.hotel.services.TypeRoomService;
 import com.hotel.services.UserService;
+import com.sun.mail.imap.Utility;
 
 @Controller
 //@RequestMapping("booking")
@@ -62,13 +67,15 @@ public class BookingController {
 	 * return "booking"; }
 	 */
 	@PostMapping("booking")
-	private String getBooking(@ModelAttribute("bookingnew") Booking bookingnew, ModelMap modelMap) {
+	private String getBooking(@ModelAttribute("bookingnew") Booking bookingnew, ModelMap modelMap,HttpServletRequest request) throws UnsupportedEncodingException, MessagingException {
 		User user = new User();
+		String siteURL = com.hotel.Utility.getSiteURL(request);
 		user.setName(bookingnew.getUser().getName());
 		user.setEmail(bookingnew.getUser().getEmail());
 		user.setPhone(bookingnew.getUser().getPhone());
 		user.setAddress(bookingnew.getUser().getAddress());
 		userservice.save(user);
+		bookingservice.sendVerificationEmail(bookingnew,siteURL);
 		bookingnew.setUser(user);
 
 		if (promotionservice.searchPromotion(bookingnew.getCheckInDate(), bookingnew.getCheckOutDate(),
